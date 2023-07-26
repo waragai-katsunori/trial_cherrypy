@@ -37,12 +37,11 @@ class App:
                     break
                 out.write(data)
                 size += len(data)
-        out = '''
+        out = f'''
 File received.
-Filename: {}
-Length: {}
-Mime-type: {}
-''' .format(ufile.filename, size, ufile.content_type, data)
+Filename: {ufile.filename}
+Length: {size}
+Mime-type: {ufile.content_type}'''
         return out
 
 
