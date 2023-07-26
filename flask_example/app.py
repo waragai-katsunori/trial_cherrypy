@@ -8,6 +8,12 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+
+def image_conversion(img):
+    img = img.convert('L')  # グレースケール変換
+    img = img.rotate(45)    # 画像を45度回転
+    return img
+
 @app.route('/upload', methods=['POST'])
 def upload():
     if 'image' not in request.files:
@@ -17,8 +23,7 @@ def upload():
 
     # 画像の加工処理
     img = Image.open(image)
-    img = img.convert('L')  # グレースケール変換
-    img = img.rotate(45)    # 画像を45度回転
+    img = image_conversion(img)
 
     # 加工した画像を表示するためにバイナリデータに変換
     img_bytes = io.BytesIO()
