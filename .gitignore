@@ -1,4 +1,5 @@
 *.jpg
 *.jpeg
+*.png
 .idea
-
+__pycache__
